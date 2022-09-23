@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='profile2.css') }}">
+</head>
+<body>
+
+	<div class="subheader">
+		<a href="/" class="hlink"><p>Friends</p></a>
+		<a href="/discover" class="hlink"><p>Discover</p></a>
+		<a href="/search" class="hlink"><p>Search</p></a>
+		<a href="/user/{{own_id}}" class="hlink"><p>Profile</p></a>
+	</div>
+	<div class="header">
+		<h1>{{username}}</h1>
+	</div>
+	<div class="follow">
+		<p>{{followers}} Followers</p>
+		<p>{{following}} Following</p>
+	</div>
+
+	<div class="actions">
+	<form method="POST">
+		{% if action == "unrequest"%}
+		<input type="hidden" value="unrequest" name="action" id="action">
+		<input type="submit" value="Requested" style="background-color: rgb(200,200,200)">
+		{% else %}
+		<input type="hidden" value="follow" name="action" id="action">
+		<input type="submit" value="Follow" style="background-color:rgb(93, 177, 222)">
+		{% endif %}
+	</form>
+	</div>
+
+</body>
+</html>
+
+
+

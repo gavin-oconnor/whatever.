@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='profile2.css') }}">
+</head>
+<body>
+
+	<div class="subheader">
+		<a href="/" class="hlink"><p>Friends</p></a>
+		<a href="/discover" class="hlink"><p>Discover</p></a>
+		<a href="/search" class="hlink"><p>Search</p></a>
+		<a href="/user/{{own_id}}" class="hlink"><p>Profile</p></a>
+	</div>
+	<div class="header">
+		<h1>{{username}}</h1>
+	</div>
+	<div class="follow">
+		<a href="/user/{{id}}/followers"><p>{{followers}} Followers</p></a>
+		<a href="/user/{{id}}/following"><p>{{following}} Following</p></a>
+	</div>
+<div class="actions">
+<form method="POST">
+{% if action == "unfollow" %}
+	<input type="hidden" value="unfollow" name="action" id="action">
+	<input type="submit" value="Following" style="background-color: rgb(200,200,200)">
+{% else %}
+	<input type="hidden" value="follow" name="action" id="action">
+	<input type="submit" value="Follow" style="background-color:rgb(93, 177, 222)">
+{% endif %}
+</form>
+</div>
+
+{% for post in posts %}
+		<div class="post">
+			<div class="username">
+				<a href="/user/{{post.poster_id}}">
+					<h3>@{{post.poster_name}}</h3>
+				</a>
+			</div>
+			<div class="date">
+				<p>{{post.date}} {{post.time}}</p>
+			</div>
+			<div class="break"></div>
+			<div class="content">
+				<p>{{post.content}}</p>
+			</div>
+		</div>
+{% endfor %}
+</body>
+</html>
+
+
+

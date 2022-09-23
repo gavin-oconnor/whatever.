@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='lists2.css') }}">
+</head>
+
+<body>
+	<div class="header">
+		<a href="/user/{{id}}" class="username-link"><h2>{{username}}</h2></a>
+		<p>{{follower_count}} Followers</p>
+	</div>
+
+	{% for user in followers %}
+	<a href="/user/{{user.id}}" class="user-link">
+	<div class="user-row">
+		
+	{{user.username}}
+	
+	</div>
+	</a>
+	{% endfor %}
+</body>
+</html>
+

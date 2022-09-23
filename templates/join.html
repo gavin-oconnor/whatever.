@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#pub").click(function() {
+                $(this).css("background-color","rgb(56, 194, 107)");
+                $("#priv").css("background-color","rgb(200, 200, 200)");
+                $("#button-value").val("public");
+            })
+           $("#priv").click(function() {
+                $(this).css("background-color","rgb(56, 194, 107)");
+                $("#pub").css("background-color","rgb(200, 200, 200)");
+                $("#button-value").val("private");
+            })
+           $(function () {
+           const banned_key_codes = [32,126,96,33,64,35,36,37,94,38,42,40,41,45,61,43,91,123,93,125,92,124,59,58,39,34,44,60,46,62,47,63];
+           $("#username").on('keypress', function(e) {
+            console.log(e.which)
+            if(banned_key_codes.includes(e.which)){
+                return false;
+            }
+           })
+       });
+        })
+        
+    </script>
+    </head>
+</head>
+<body>
+
+</body>
+</html>
+
+    <div class="header">
+        <h1>whatever.</h1>
+    </div>
+
+
+
+<div class="login-form">
+    <form method="POST">
+    <!--     <label for="username">Username</label> -->
+        <input type="text" id="username" maxlength="20" name="username" placeholder="Username">
+        <br>
+    <!--     <label for="password">Password</label> -->
+        <input type="password" id="pasword" name="password" placeholder="Password">
+        <br>
+        <button id="pub" type="button">Public</button>
+        <button id="priv" type="button">Private</button>
+        <input type="hidden" id="button-value" name="button-value" value="public">
+        <br>
+        <input type="submit" value="Join">
+    </form>
+    <p>Already have an account? Log in <a href="/login">Here</a></p>
+    <p>{{error}}</p>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

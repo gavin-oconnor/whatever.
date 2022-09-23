@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+	<div class="header">
+		<h1>whatever.</h1>
+	</div>
+
+	<div class="subheader">
+		<a href="/" class="hlink"><p>Friends</p></a>
+		<a href="/discover" class="hlink"><p>Discover</p></a>
+		<p>Search</p>
+		<a href="/user/{{id}}" class="hlink"><p>Profile</p></a>
+	</div>
+
+	<div class="search">
+		<form method="POST">
+			<input type="text" name="query" id="query" placeholder="Search">
+			<button type="submit"><i class="fa fa-search"></i></button>
+			<!-- <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button> -->
+	</div>
+
+	<div class="results">
+	{% for user in res %}
+	<a href="/user/{{user.id}}" class="user-link">
+	<div class="user-row">
+		
+	{{user.username}}
+	
+	</div>
+	</a>
+	
+	{% endfor %}
+	</div>
+
+</body>
+</html>
+

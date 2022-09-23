@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='lists.css') }}">
+</head>
+
+<body>
+	<div class="header">
+		<a href="/user/{{id}}"><h2>{{username}}</h2></a>
+		<p>{{amt}} Requests</p>
+	</div>
+	{% for user in requests %}
+		
+			<div class="user-row">
+				<form method="POST">
+					<a href="/user/{{user.id}}">
+					{{user.username}}
+					</a>
+					<input type="hidden" name="requester" value="{{user.id}}">
+					<button type="submit" class="accept" name="choice" value="accept">accept</button>
+					<button type="submit" class="deny" name="choice" value="deny">deny</button>
+				</form>
+			</div>
+		
+	{% endfor %}
+</body>
+</html>
+
